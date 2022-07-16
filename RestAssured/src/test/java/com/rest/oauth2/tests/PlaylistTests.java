@@ -11,22 +11,24 @@ import com.rest.oauth2.pojo.PlaylistItem;
 import com.rest.oauth2.utils.ConfigLoader;
 import com.rest.oauth2.api.applicationApi.PlaylistApi;
 import com.rest.oauth2.data.Data;
+import com.rest.oauth2.data.DataLoader;
 
 
 public class PlaylistTests {
 	
 	public PlaylistItem playlistBuilder(String name, String description, Boolean _public) {
-		return new PlaylistItem().
-		setName(name).
-		setDescription(description).
-		setPublic(_public);
+		PlaylistItem playlist = new PlaylistItem();
+		playlist.setName(name);
+		playlist.setDescription(description);
+		playlist.set_public(_public);
+		return playlist;
 
 	}
 	
 	public void assertPlaylistEquals(PlaylistItem requestPlaylist, PlaylistItem responsePlaylist ) {
 		assertEquals(responsePlaylist.getName(), requestPlaylist.getName());
         assertEquals(responsePlaylist.getDescription(), requestPlaylist.getDescription());
-        assertEquals(responsePlaylist.getPublic(), requestPlaylist.getPublic());
+        assertEquals(responsePlaylist.get_public(), requestPlaylist.get_public());
 	}
 	
 	public void assertStatusCode(int actualStatusCode, int expectedStatusCode) {
