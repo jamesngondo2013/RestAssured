@@ -6,15 +6,19 @@ import com.rest.oauth2.api.Route;
 import com.rest.oauth2.pojo.PlaylistItem;
 import com.rest.oauth2.utils.ConfigLoader;
 import com.rest.oauth2.api.TokenManager;
+
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 public class PlaylistApi {
 	
+	@Step
 	public static Response post(PlaylistItem requestPlaylist) {
 		return RestResource.post(Route.USERS + "/"+ ConfigLoader.getInstance().getUserId() + Route.PALYLIST, TokenManager.getToken(), requestPlaylist);	         
 	}
 	
-public static Response post(String invalid_token, PlaylistItem requestPlaylist) {
+	
+	public static Response post(String invalid_token, PlaylistItem requestPlaylist) {
 		return RestResource.post(Route.USERS +"/" + ConfigLoader.getInstance().getUserId() + Route.PALYLIST, invalid_token, requestPlaylist);
 	}
 	
