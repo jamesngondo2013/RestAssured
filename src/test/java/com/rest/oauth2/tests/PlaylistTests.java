@@ -24,7 +24,7 @@ import com.rest.oauth2.data.DataLoader;
 
 @Epic("Spotify OAuth 2.0")
 @Feature("Playlist API")
-public class PlaylistTests {
+public class PlaylistTests extends  BaseTest{
 	
 	@Step
 	public PlaylistItem playlistBuilder(String name, String description, Boolean _public) {
